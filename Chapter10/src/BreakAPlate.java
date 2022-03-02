@@ -25,7 +25,7 @@ public class BreakAPlate {
 				}
 			}
 		});
-	}
+	}//s
 
 	/**
 	 * Create the application.
