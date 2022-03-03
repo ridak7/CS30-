@@ -1,4 +1,5 @@
 import java.awt.EventQueue;
+import java.math.*;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -6,6 +7,8 @@ import javax.swing.JLabel;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.SwingConstants;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class BreakAPlate {
 
@@ -75,6 +78,30 @@ public class BreakAPlate {
 		panel.add(lblNewLabel_3);
 		
 		JButton btnNewButton = new JButton("New button");
+		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) 
+			{
+				  int randomNum = (int)(Math.random() * 4);
+				  
+				  switch(randomNum) {
+				  case 1:
+				   lb.setIcon(img2);
+				    break;
+				  case 2:
+				  lb2.setIcon(img2);
+				  lb.setIcon(img2);
+				    break;
+				  case 3:
+				  lb3.setIcon(img2);
+				  lb.setIcon(img2);
+				  lb2.setIcon(img2);
+				  break;
+				  default:
+				
+				  }	
+				
+			}
+		});
 		btnNewButton.setBounds(162, 133, 89, 23);
 		panel.add(btnNewButton);
 	}
