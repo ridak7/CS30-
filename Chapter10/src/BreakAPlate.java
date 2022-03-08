@@ -9,6 +9,8 @@ import javax.swing.JButton;
 import javax.swing.SwingConstants;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.awt.Color;
+import java.awt.Font;
 
 public class BreakAPlate {
 
@@ -47,15 +49,16 @@ public class BreakAPlate {
 		frame.getContentPane().setLayout(null);
 		
 		JPanel panel = new JPanel();
+		panel.setBackground(new Color(112, 128, 144));
 		panel.setBounds(0, 0, 434, 261);
 		frame.getContentPane().add(panel);
 		panel.setLayout(null);
 		
-		ImageIcon img = new ImageIcon(this.getClass().getResource("/smiley.jpg"));
-		ImageIcon img2 = new ImageIcon(this.getClass().getResource("/angry.jpg"));
-		ImageIcon img3 = new ImageIcon(this.getClass().getResource("/placeholder.gif"));
-		ImageIcon img4 = new ImageIcon(this.getClass().getResource("/sticker.gif"));
-		ImageIcon img5 = new ImageIcon(this.getClass().getResource("/tiger.gif"));
+		ImageIcon img = new ImageIcon(this.getClass().getResource("/angry.jpeg"));
+		ImageIcon img2 = new ImageIcon(this.getClass().getResource("/smiley.jpg"));
+		ImageIcon img3 = new ImageIcon(this.getClass().getResource("/placeholder.jpeg"));
+		ImageIcon img4 = new ImageIcon(this.getClass().getResource("/sticker.jpeg"));
+		ImageIcon img5 = new ImageIcon(this.getClass().getResource("/tiger.jpeg"));
 		
 		JLabel lb = new JLabel("");
 		lb.setIcon(img);
@@ -73,36 +76,71 @@ public class BreakAPlate {
 		lb3.setBounds(324, 11, 100, 86);
 		panel.add(lb3);
 		
-		JLabel lblNewLabel_3 = new JLabel("New label");
-		lblNewLabel_3.setBounds(185, 219, 46, 14);
-		panel.add(lblNewLabel_3);
+		JLabel lb4 = new JLabel("");
+		lb4.setIcon(img3);
+		lb4.setBounds(162, 164, 100, 86);
+		panel.add(lb4);
 		
-		JButton btnNewButton = new JButton("New button");
-		btnNewButton.addActionListener(new ActionListener() {
+		JButton btn = new JButton("Play");
+		btn.setFont(new Font("Gill Sans MT", Font.BOLD | Font.ITALIC, 18));
+		btn.setForeground(new Color(112, 128, 144));
+		btn.setBackground(new Color(255, 255, 255));
+		btn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) 
 			{
-				  int randomNum = (int)(Math.random() * 4);
-				  
-				  switch(randomNum) {
-				  case 1:
-				   lb.setIcon(img2);
-				    break;
-				  case 2:
-				  lb2.setIcon(img2);
-				  lb.setIcon(img2);
-				    break;
-				  case 3:
-				  lb3.setIcon(img2);
-				  lb.setIcon(img2);
-				  lb2.setIcon(img2);
-				  break;
-				  default:
-				
-				  }	
+				String eventName = btn.getText();//eventName is a String assigned to text shown on button for play or play again
+				int randomNum = (int)(Math.random() * 3);//Random number between 0 and 3 is assigned with 0 included
+
+				 if (eventName.equals("Play"))
+				 {  
+				 btn.setText("Play Again");//"Play Again" is displayed on button after every round
+				 
+				 switch(randomNum)//Switch which changes prize displayed based on plates broken between random number 0-3
+				 {
+				 
+				 case 0:
+					 lb.setIcon(img2);
+					 lb4.setIcon(img4);
+					 
+				   break;
+				   
+				 case 1:
+					 lb.setIcon(img2);
+					 lb2.setIcon(img2);
+					 lb4.setIcon(img4);
+					 
+				 break;
+				 
+				 case 2:
+					 lb.setIcon(img2);
+					 lb2.setIcon(img2);
+					 lb3.setIcon(img2);
+					 lb4.setIcon(img5);
+					 
+				 break;
+				 
+				 default:
+				 
+				 }  
+				 
+				 }
+				 
+				 else if(eventName.equals("Play Again"))//Display resets to original once user clicks play again
+				 {
+					 btn.setText("Play");
+					 btn.setActionCommand("Play");
+					 lb.setIcon(img);
+					 lb2.setIcon(img);
+					 lb3.setIcon(img);
+					 lb4.setIcon(img3);
+				 }
+
 				
 			}
 		});
-		btnNewButton.setBounds(162, 133, 89, 23);
-		panel.add(btnNewButton);
+		btn.setBounds(131, 117, 166, 31);
+		panel.add(btn);
+		
+		
 	}
 }
